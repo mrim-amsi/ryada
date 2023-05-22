@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ryada.Filters;
 using ryada.Models;
 using System.Diagnostics;
 
@@ -12,7 +13,7 @@ namespace ryada.Controllers
         {
             _logger = logger;
         }
-
+        [ServiceFilter(typeof(RedirectIfHasOrdersFilter))]
         public IActionResult Index()
         {
             return View();
