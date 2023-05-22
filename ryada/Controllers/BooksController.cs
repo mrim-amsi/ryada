@@ -15,13 +15,14 @@ namespace ryada.Controllers
         private readonly SearchService _searchService;
 
 
-        public BooksController(SearchService _searchService,
+        public BooksController(SearchService searchService,
                                UserManager<IdentityUser> userManager,
                                AppDBContext postDbContext,
                                IWebHostEnvironment webHostEnvironment)
         {
             _context = postDbContext;
             _hostEnvironment = webHostEnvironment;
+            _searchService = searchService;
             _userManager = userManager;
 
         }
