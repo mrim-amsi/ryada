@@ -12,10 +12,10 @@ namespace ryada.Services
         }
         public async Task<List<Book>> SearchAsync(string word)
         {
-            var expensis = await _dbContext.Books
+            return await _dbContext.Books
                .Where(p => p.Category.Name.Contains(word)).ToListAsync();
 
-            return expensis;
+          
         }
     }
 }

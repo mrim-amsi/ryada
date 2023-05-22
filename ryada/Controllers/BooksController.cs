@@ -11,27 +11,22 @@ namespace ryada.Controllers
     {
         private readonly AppDBContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly BookService _bookService;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SearchService _searchService;
 
 
-        public BooksController(SearchService searchService,
-                               UserManager<IdentityUser> userManager,
-                               AppDBContext postDbContext,
-                               IWebHostEnvironment webHostEnvironment)
+        public BooksController(UserManager<IdentityUser> userManager,AppDBContext postDbContext, IWebHostEnvironment webHostEnvironment)
         {
             _context = postDbContext;
             _hostEnvironment = webHostEnvironment;
-            _searchService = searchService;
             _userManager = userManager;
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string? search)
         {
-            List<Book> posts = _context.Books.Include(n => n.Category)
-                .ToList();
-
-            return View(posts);
+         
+            return View(await _bookService.GetBooksAsync(search ?? ""));
         }
 
         [HttpGet]
