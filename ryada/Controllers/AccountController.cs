@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ryada.Filters;
 using ryada.Models;
+using System.Security.Claims;
 
 namespace ryada.Controllers
 {
@@ -60,6 +62,7 @@ namespace ryada.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
+
         public async Task<IActionResult> Login(LoginViewModel user)
         {
             if (ModelState.IsValid)
@@ -68,6 +71,8 @@ namespace ryada.Controllers
 
                 if (result.Succeeded)
                 {
+                 
+
                     return RedirectToAction("Index", "Home");
                 }
 
