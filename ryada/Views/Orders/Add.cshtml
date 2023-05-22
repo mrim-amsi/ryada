@@ -8,11 +8,11 @@
         
         <div class="mb-3">
             <label asp-for="Quantity" class="form-label"></label>
-            <input class="form-control" asp-for="Quantity" />
+            <input class="form-control" asp-for="Quantity" value="@Model.Quantity" />
         </div>
         <div class="mb-3">
             <label asp-for="BookId" class="form-label"></label>
-            <select class="form-control" asp-for="BookId" asp-items="Model.Books">
+            <select class="form-control" asp-for="BookId" asp-items="Model.Books" >
             </select>
         </div>
 

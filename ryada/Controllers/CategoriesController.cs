@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ryada.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ryada.Controllers
 {
@@ -68,6 +69,22 @@ namespace ryada.Controllers
             
             return RedirectToAction(nameof(Index));
 
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+
+            Category addCategory = await _context.Categories.SingleOrDefaultAsync(x => x.Id == id);
+
+            return View(addCategory);
+        }
+        public async Task<IActionResult> EditSubmit(Category myCategory, int id)
+        {
+            var Exsit = await _context.Categories.SingleOrDefaultAsync(x => x.Id == id);
+            Exsit.Name = myCategory.Name;
+            _context.Categories.Update(Exsit);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+            ;
         }
     }
 }

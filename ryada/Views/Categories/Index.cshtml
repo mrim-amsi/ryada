@@ -97,8 +97,8 @@
                                 </td>
                                 <td class="text-center">
 
-                                    <form asp-controller="Categories" asp-action="Edit" method="post" style="display: inline;">
-                                        <input value="@item.Id" hidden name="id" />
+                                    <form asp-controller="Categories" asp-action="Edit" method="post" style="display: inline;" asp-route-id="@item.Id">
+                                        @*<input value="@item.Id" hidden name="id" />*@
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                             Edit

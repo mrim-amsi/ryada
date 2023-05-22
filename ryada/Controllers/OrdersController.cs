@@ -36,8 +36,6 @@ namespace ryada.Controllers
 
             OrderDTO addOrder = new OrderDTO();
             addOrder.Books = new SelectList(books, "Id", "Title");
-
-
             return View(addOrder);
         }
         [HttpPost]
@@ -62,8 +60,28 @@ namespace ryada.Controllers
             var order = await _context.orders.FindAsync(id);
             _context.orders.Remove(order);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));        
+        }
 
+        public async Task<IActionResult> Edit(int id)
+        {
+
+            order addOrder = await _context.orders.SingleOrDefaultAsync(x => x.Id == id);
+            List<Book> books = _context.Books.ToList();
+
+            ViewBag.listBooks = new SelectList(books, "Id", "Title");
+
+            return View(addOrder);
+        }
+        public async Task<IActionResult> EditSubmit(order myOrder, int id)
+        {
+            var Exsit = await _context.orders.SingleOrDefaultAsync(x => x.Id == id);
+            Exsit.Quantity = myOrder.Quantity;
+            Exsit.BookId = myOrder.BookId;
+            _context.orders.Update(Exsit);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+            ;
         }
     }
 }

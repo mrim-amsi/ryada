@@ -56,7 +56,6 @@
 
 <main>
     <div class="">
-        <h1 class="mt-4">orders</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"> </a></li>
             <li ><a href="index.html">Dashbourd </a></li>
@@ -116,8 +115,8 @@
                                 </td>
                                 <td class="text-center">
 
-                                    <form asp-controller="Categories" asp-action="Edit" method="post" style="display: inline;">
-                                        <input value="@item.Id" hidden name="id" />
+                                    <form asp-action="Edit" method="get" style="display: inline;" asp-route-id="@item.Id">
+                                        @*<input value="@item.Id" hidden name="id" />*@
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                             Edit

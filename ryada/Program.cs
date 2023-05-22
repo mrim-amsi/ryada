@@ -13,10 +13,10 @@ string connectionString = builder.Configuration.GetConnectionString("default");
 
 builder.Services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add(typeof(CheckOrdersFilter)); // Add the filter as a global filter
-});
+//builder.Services.AddControllers(options =>
+//{
+//    options.Filters.Add(typeof(CheckOrdersFilter)); // Add the filter as a global filter
+//});
 var app = builder.Build();
 
 // Configure the HTTP requestfirst pipeline.

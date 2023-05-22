@@ -1,0 +1,17 @@
+﻿@model Category
+@{
+}
+<div class="m-5">
+
+    <form asp-action="EditSubmit" method="Put" enctype="multipart/form-data" asp-route-id="@Model.Id">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input class="form-control" asp-for="Name" />
+        </div>
+       
+
+        <hr />
+        <input type="submit" class="btn btn-primary" value="Add Category" />
+    </form>
+</div>
