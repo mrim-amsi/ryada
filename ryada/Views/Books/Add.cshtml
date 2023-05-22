@@ -1,0 +1,33 @@
+﻿@model BookDTO
+@{
+}
+
+<div class="m-5">
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input class="form-control" asp-for="Title" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Author" class="form-label"></label>
+            <input class="form-control" asp-for="Author" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label"></label>
+            <input class="form-control" asp-for="Price" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input class="form-control" asp-for="Quantity" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label"></label>
+            <select class="form-control" asp-for="CategoryId" asp-items="Model.categories">
+            </select>
+        </div>
+       
+    <hr/>
+    <input type="submit" class="btn btn-primary" value="Add Category" />
+    </form>
+</div>

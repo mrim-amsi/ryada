@@ -1,0 +1,22 @@
+﻿@model OrderDTO
+@{
+}
+
+<div class="m-5">
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+        
+        <div class="mb-3">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input class="form-control" asp-for="Quantity" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="BookId" class="form-label"></label>
+            <select class="form-control" asp-for="BookId" asp-items="Model.Books">
+            </select>
+        </div>
+
+    <hr />
+    <input type="submit" class="btn btn-primary" value="Add Category" />
+    </form>
+</div>

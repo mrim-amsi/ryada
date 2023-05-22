@@ -1,0 +1,16 @@
+﻿@model CategoryDTO
+@{
+}
+
+<div class="m-5">
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <hr />
+    <input type="submit" class="btn btn-primary" value="Add Category" />
+    </form>
+</div>

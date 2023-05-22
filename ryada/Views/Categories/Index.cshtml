@@ -1,0 +1,128 @@
+﻿@model List<Category>
+@{}
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["success"]
+    </div>
+}
+
+@*
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                Image
+            </td>
+            <td>
+                Post ID
+            </td>
+            <td>
+                Title
+            </td>
+            <td>
+                Created at
+            </td>
+            <td>
+                Category
+            </td>
+            <td>
+                Tags
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category item in Model)
+        {
+            <tr>
+                <td>
+                    <img style="width:50px;height:50px; object-fit:cover; border-radius:50%;" src="~/Images/@item.ImageName" />
+                </td>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>              
+            </tr>
+        }
+    </tbody>
+</table>
+*@
+
+
+
+        <main>
+
+            <div class="">
+                <ol class="breadcrumb mb-4">
+                    <li><a href="index.html">Dashbourd </a></li>
+            <li class="breadcrumb-item active"><a href="index.html"> / caregories </a></li>
+
+                 </ol>
+        <div class="d-flex justify-content-end m-1">
+            <a class="btn btn-primary" asp-action="Add" asp-controller="Categories">Add Category</a>
+        </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        @*DataTable Example*@
+                    </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                           
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+
+                        @foreach (Category item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td class="text-center">
+
+                                    <form asp-controller="Categories" asp-action="Edit" method="post" style="display: inline;">
+                                        <input value="@item.Id" hidden name="id" />
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                            Edit
+                                        </button>
+
+                                    </form>
+                                    <form asp-controller="Categories" asp-action="Remove" method="post" asp-route-id="@item.Id" style="display: inline;">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                            Delet
+                                        </button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+                </div>
+            </div>
+        </main>
+ 
