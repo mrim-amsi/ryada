@@ -58,14 +58,23 @@
     <div class="">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"> </a></li>
-            <li ><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active" ><a href="index.html"> / Book </a></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="index.html"> / Book </a></li>
 
         </ol>
         <div class="d-flex justify-content-end m-1">
             <a class="btn btn-primary" asp-action="Add" asp-controller="Books">Add book</a>
         </div>
         <div class="card mb-4">
+            <div class="row">
+                <form asp-action="Index">
+                    <div class="col-md-6">
+
+                        <input name="search" class="form-control" />
+                        <button type="submit" class="btn btn-success mt-2">Search</button>
+                    </div>
+                </form>
+            </div>
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
                 @*DataTable Example*@
@@ -87,7 +96,7 @@
                                 Price
                             </th>
                             <th>
-                                category 
+                                category
                             </th>
                             <th>Action</th>
                         </tr>
