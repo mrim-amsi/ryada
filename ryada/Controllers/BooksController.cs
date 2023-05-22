@@ -12,7 +12,6 @@ namespace ryada.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly UserManager<IdentityUser> _userManager;
 
-      
 
         public BooksController(UserManager<IdentityUser> userManager,AppDBContext postDbContext, IWebHostEnvironment webHostEnvironment)
         {
