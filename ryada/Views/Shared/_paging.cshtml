@@ -1,0 +1,71 @@
+﻿@using ryada.Controllers
+@model PagintingFooterModel
+@{
+    string prev = Model.Previous == "disabled" ? "false" : "true";
+    string nxt = Model.Next == "disabled" ?  "false" : "true";
+}
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageID - 1)" class="button is-link @(prev == "false"? "is-light": "")" onclick='return @prev'>
+Previous
+</a>
+    @if(Model.TotalPages<5){
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+            <a asp-action="Index" asp-route-pageNumber="@i" class="button is-link @(Model.PageID != i? "is-light": "")">
+                @i
+             </a>
+    }}
+    else{
+        <a asp-action="Index" asp-route-pageNumber="1" class="button is-link @(Model.PageID != 1? "is-light": "")">
+            1
+         </a>
+    @if (Model.PageID == 1 || Model.PageID==2){
+        @for (int i = 2; i <= 4; i++)
+        {
+             <a asp-action="Index" asp-route-pageNumber="@i" class="button is-link @(Model.PageID != i? "is-light": "")">
+             @i
+             </a>
+        }   
+
+        <span> ... </span>
+    }
+    else
+    {
+        if (Model.PageID >3)
+        {
+            <span> ... </span>
+        } if (Model.PageID > 4)
+            {
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageID - 2)" class="button is-link is-light">
+            @(Model.PageID - 2)
+        </a> }
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageID - 1)" class="button is-link is-light" >
+            @(Model.PageID - 1)
+        </a>
+        if (Model.PageID <= Model.TotalPages - 1)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(Model.PageID)" class="button is-link" >
+                @(
+            Model.PageID
+            )
+            </a>}
+        if (Model.PageID <= Model.TotalPages -2)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(Model.PageID + 1)" class="button is-link is-light">
+                @(Model.PageID + 1)
+        </a>}
+        if (Model.PageID < Model.TotalPages - 2)
+        {
+             <span> ... </span>
+        }
+       
+
+    }
+
+
+         <a asp-action="Index" asp-route-pageNumber="@Model.TotalPages" class="button is-link @(Model.PageID != Model.TotalPages? "is-light": "")">
+            @Model.TotalPages
+          </a>
+    }
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageID + 1)" class="button is-link @(nxt == "false"? "is-light": "")" onclick='return @nxt'>
+    Next</a>
+

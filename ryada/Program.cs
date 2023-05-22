@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using ryada;
 using ryada.Filters;
+using ryada.Services;
+using ryada.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddControllers(options =>
   //  options.Filters.Add(typeof(CheckOrdersFilter)); // Add the filter as a global filter
 });
 builder.Services.AddScoped<RedirectIfHasOrdersFilter>();
+builder.Services.AddScoped<SearchService>();
 var app = builder.Build();
 
 // Configure the HTTP requestfirst pipeline.

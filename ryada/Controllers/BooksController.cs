@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ryada.Models;
+using ryada.Services;
 
 namespace ryada.Controllers
 {
@@ -11,9 +12,13 @@ namespace ryada.Controllers
         private readonly AppDBContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SearchService _searchService;
 
 
-        public BooksController(UserManager<IdentityUser> userManager,AppDBContext postDbContext, IWebHostEnvironment webHostEnvironment)
+        public BooksController(SearchService _searchService,
+                               UserManager<IdentityUser> userManager,
+                               AppDBContext postDbContext,
+                               IWebHostEnvironment webHostEnvironment)
         {
             _context = postDbContext;
             _hostEnvironment = webHostEnvironment;
